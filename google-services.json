@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "311810452356",
+    "firebase_url": "https://between-b11ab.firebaseio.com",
+    "project_id": "between-b11ab",
+    "storage_bucket": "between-b11ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311810452356:android:67d2aa1919f7705d",
+        "android_client_info": {
+          "package_name": "com.project.between"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311810452356-goivr18qhej0l1nnfr59dnjev1n29nvt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.between",
+            "certificate_hash": "16dbaa05ac5ba53d454548ef06745ffac94efede"
+          }
+        },
+        {
+          "client_id": "311810452356-s0di73ag0krba52o3q999q8hahcaermr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDff8226Ca-ve_-18zB-4odrbUV6GDs0h8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "311810452356-s0di73ag0krba52o3q999q8hahcaermr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
