@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.project.between">
 
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,9 +22,8 @@
         <activity android:name=".signInAndUp.PhoneConnectActivity" />
         <activity android:name=".signInAndUp.SignIn2Activity" />
         <activity android:name=".signInAndUp.AcceptActivity" />
-        <activity android:name=".AnniversaryActivity" />
-        <activity android:name=".ChattingActivity" />
-        <activity android:name=".signInAndUp.ProfileActivity"></activity>
+        <activity android:name=".signInAndUp.ProfileActivity" />
+        <activity android:name=".signInAndUp.MainActivity"></activity>
     </application>
 
 </manifest>

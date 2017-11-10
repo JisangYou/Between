@@ -1,32 +1,41 @@
 package com.project.between.signInAndUp;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.project.between.ChattingActivity;
 import com.project.between.R;
-import com.project.between.domain.User;
 
 public class PhoneConnectActivity extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference userRef;
     DatabaseReference tempRoomRef;
-    private EditText myNum_edit;
-    private EditText friendNum_edit;
+    EditText myNum_edit;
+    EditText friendNum_edit;
     private Button phone_Connect_btn;
     String tempkey;
+    ImageButton phoneNum_img_btn;
+    TextView friendPhone_text;
+    String phonenumber_local;
+    boolean phoneNumberCheck;
+    boolean phoneNumberCheck2;
 
 
     @Override
@@ -38,9 +47,12 @@ public class PhoneConnectActivity extends AppCompatActivity {
         userRef = database.getReference("user");
         tempRoomRef = database.getReference("temp");
 
+
         Intent intent = getIntent();
         tempkey = intent.getExtras().getString("tempKey");
         initView();
+        checkPhoneNumber();
+        loadPhoneNumberLocalDatabase();
 
 
     }
@@ -94,7 +106,11 @@ public class PhoneConnectActivity extends AppCompatActivity {
                     } else {
                         Log.e("확인1", friendNumber + "로 아무도 방을 만들지 않음");
                         tempRoomRef.child(myNumber).child("check").setValue(friendNumber);
-                        //moveToAcceptActivity(myNumber);
+
+                        /*수정
+                        moveToAcceptActivity(myNumber);
+                        */
+                        moveToAcceptActivity(myNumber, friendNumber);
                         break;
                     }
                 }
@@ -107,6 +123,7 @@ public class PhoneConnectActivity extends AppCompatActivity {
             }
         });
     }
+
 
     public void moveToProfileActivity() {
         Intent intent = new Intent(PhoneConnectActivity.this, ProfileActivity.class);
@@ -126,5 +143,83 @@ public class PhoneConnectActivity extends AppCompatActivity {
         myNum_edit = findViewById(R.id.myNum_edit);
         friendNum_edit = findViewById(R.id.friendNum_edit);
         phone_Connect_btn = findViewById(R.id.phone_Connect_btn);
+        phoneNum_img_btn = findViewById(R.id.phoneNum_img_btn);
+        friendPhone_text = findViewById(R.id.friendPhone_text);
+
     }
+
+    private void checkPhoneNumber() {
+        myNum_edit.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+        myNum_edit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                if (editable.length() == 13) {
+                    phoneNumberCheck = true;
+                } else {
+                    phoneNumberCheck = false;
+                }
+
+            }
+        });
+
+        friendNum_edit.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+        friendNum_edit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() == 13) {
+                    phoneNumberCheck2 = true;
+                } else {
+                    phoneNumberCheck2 = false;
+                }
+            }
+        });
+    }
+
+    public void loadPhoneNumberLocalDatabase() {
+
+        phoneNum_img_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setData(ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+                friendNum_edit.setText(phonenumber_local);
+                startActivityForResult(intent, 1);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            Cursor cursor = getContentResolver().query(data.getData(),
+                    new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER}, null, null, null);
+            cursor.moveToFirst();
+
+            phonenumber_local = cursor.getString(0);
+
+            cursor.close();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
 }

@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.project.between.AnniversaryActivity;
+
 import com.project.between.R;
 
 import java.util.Calendar;
@@ -24,19 +24,16 @@ public class ProfileActivity extends AppCompatActivity {
     Calendar calendar;
     TextView textViewBirthday, textViewFirstday;
     EditText name_edit;
-    RadioGroup gender;
+    RadioGroup radiogender;
     RadioButton radiomale, radiofemale;
     int year, month, day;
-
+    int selectedId;
     String birthday, firstday;
-
     String tempkey;
-
-
-
     FirebaseDatabase database;
     DatabaseReference userRef;
-
+    String gender;
+    String name;
 
 
     @Override
@@ -58,7 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
                         textViewBirthday.setText(year + "년 " + (month + 1) + "월 " + dayOfMonth + "일");
-                        birthday= textViewBirthday.getText().toString();
+                        birthday = textViewBirthday.getText().toString();
                     }
                 }, year, month, day).show();
             }
@@ -80,16 +77,20 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void movetohome(View view) {
-        int selectedId = gender.getCheckedRadioButtonId();
-        String gender = selectedId == R.id.radiomale ? "male" : "female";
-        String name = name_edit.getText().toString();
+        addDatabase();
+        Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void addDatabase() {
+        selectedId = radiogender.getCheckedRadioButtonId();
+       gender = selectedId == R.id.radiomale ? "male" : "female";
+        name = name_edit.getText().toString();
         userRef.child(tempkey).child("name").setValue(name);
         userRef.child(tempkey).child("birthday").setValue(birthday);
         userRef.child(tempkey).child("firstday").setValue(firstday);
         userRef.child(tempkey).child("gender").setValue(gender);
-        Intent intent = new Intent(ProfileActivity.this, AnniversaryActivity.class);
-        startActivity(intent);
-
     }
 
 
@@ -107,6 +108,6 @@ public class ProfileActivity extends AppCompatActivity {
         day = calendar.get(Calendar.DAY_OF_MONTH);
         name_edit = findViewById(R.id.name_edit);
         start_btn = findViewById(R.id.start_btn);
-        gender = findViewById(R.id.gender);
+        radiogender = findViewById(R.id.radiogender);
     }
 }

@@ -1,4 +1,4 @@
-package com.project.between.verificationUtil;
+package com.project.between.verificationUtil_js;
 
 import android.app.Activity;
 import android.content.DialogInterface;

@@ -1,4 +1,4 @@
-package com.project.between.verificationUtil;
+package com.project.between.verificationUtil_js;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -22,9 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.project.between.R;
-import com.project.between.domain.User;
-import com.project.between.verificationUtil.DialogUtil;
-import com.project.between.verificationUtil.VerificationUtil;
+import com.project.between.verificationUtil_js.DialogUtil;
+import com.project.between.verificationUtil_js.VerificationUtil;
 
 public class SignUpActivity extends AppCompatActivity {
 

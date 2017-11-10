@@ -1,4 +1,4 @@
-package com.project.between.verificationUtil;
+package com.project.between.verificationUtil_js;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

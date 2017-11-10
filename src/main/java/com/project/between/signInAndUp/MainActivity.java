@@ -1,13 +1,15 @@
-package com.project.between;
+package com.project.between.signInAndUp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class AnniversaryActivity extends AppCompatActivity {
+import com.project.between.R;
+
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anniversary);
+        setContentView(R.layout.activity_main);
     }
 }

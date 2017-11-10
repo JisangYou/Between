@@ -1,4 +1,4 @@
-package com.project.between.domain;
+package com.project.between.signInAndUp;
 
 /**
  * Created by JisangYou on 2017-11-06.

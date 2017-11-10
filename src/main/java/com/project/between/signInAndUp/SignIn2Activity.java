@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.project.between.AnniversaryActivity;
+
 import com.project.between.R;
 
 public class SignIn2Activity extends AppCompatActivity {
@@ -64,7 +64,7 @@ public class SignIn2Activity extends AppCompatActivity {
                             // 이메일 검증 확인
                             if (user.isEmailVerified()) {
                                 // 다음 페이지로 이동
-                                Intent intent = new Intent(SignIn2Activity.this, AnniversaryActivity.class);
+                                Intent intent = new Intent(SignIn2Activity.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();
                             } else {
