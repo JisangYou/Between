@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.project.between">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/NoActionBar">
+        <activity
+            android:name=".activity.ChattingActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name=".activity.logIn_activity.SignInActivity" />
+
+
+        <activity android:name=".activity.logIn_activity.SignUpActivity" />
+        <activity android:name=".activity.logIn_activity.AcceptActivity" />
+        <activity android:name=".activity.logIn_activity.PhoneConnectActivity" />
+        <activity android:name=".activity.logIn_activity.ProfileActivity" />
+        <activity android:name=".activity.logIn_activity.SignIn2Activity" />
+        <activity android:name=".activity.HomeActivity" >
+        </activity>
+        <activity android:name=".activity.AnniversaryListActivity" />
+        <activity android:name=".activity.AnniversarySettingActivity" />
+        <activity android:name=".activity.CalendarViewActivity" />
+        <activity android:name=".activity.CalendarWriteActivity" />
+        <activity android:name=".activity.logIn_activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
