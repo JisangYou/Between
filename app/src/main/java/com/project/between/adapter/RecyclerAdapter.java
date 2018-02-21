@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.project.between.R;
 import com.project.between.domain.MyMessage;
+import com.project.between.util.ConstantUtil;
 import com.project.between.util.PreferenceUtil;
 
 import java.net.MalformedURLException;
@@ -40,7 +41,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyAdap
     @Override
     public int getItemViewType(int position) {
 
-        if ((list.get(position).user_num).equals(PreferenceUtil.getStringValue(context,"myNum"))) {
+        if ((list.get(position).user_num).equals(PreferenceUtil.getStringValue(context, ConstantUtil.MY_NUMBER))) {
             return MY_MESSAGE;
         } else {
             return YOUR_MESSAGE;
@@ -72,7 +73,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyAdap
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        Log.e("RecyclerAdapter","check1"+url);
         Glide.with(context).load(url).into(holder.imageProfile);
 
 

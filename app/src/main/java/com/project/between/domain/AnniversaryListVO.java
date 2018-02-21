@@ -10,7 +10,8 @@ public class AnniversaryListVO {
     String date;
     String dday;
     String homeYn;
-    public AnniversaryListVO(String key, String title, String date, String dday, String homeYn){
+
+    public AnniversaryListVO(String key, String title, String date, String dday, String homeYn) {
         this.key = key;
         this.title = title;
         this.date = date;

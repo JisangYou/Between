@@ -18,6 +18,7 @@ public class User {
     public String joinDate;
     public String birth;
     public String gender;
+    public String imageUrl;
 
     public User() {
 
@@ -34,7 +35,7 @@ public class User {
         this.friend_phone = friend_phone;
     }
 
-    public User(String id, String name, String email, String password, String phone, String friend_phone, String message, String token, String notification, String joinDate, String birth, String gender) {
+    public User(String id, String name, String email, String password, String phone, String friend_phone, String message, String token, String notification, String joinDate, String birth, String gender, String imageUrl) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -47,26 +48,131 @@ public class User {
         this.joinDate = joinDate;
         this.birth = birth;
         this.gender = gender;
+        this.imageUrl = imageUrl;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getFriend_phone() {
+        return friend_phone;
+    }
+
+    public void setFriend_phone(String friend_phone) {
+        this.friend_phone = friend_phone;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getNotification() {
+        return notification;
+    }
+
+    public void setNotification(String notification) {
+        this.notification = notification;
+    }
+
+    public String getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(String joinDate) {
+        this.joinDate = joinDate;
+    }
+
+    public String getBirth() {
+        return birth;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override
     public String toString() {
-
-        return this.id + " " +
-                this.name + " " +
-                this.email + " " +
-                this.password + " " +
-                this.phone + " " +
-                this.friend_phone + " " +
-                this.message + " " +
-                this.token + " " +
-                this.notification + " " +
-                this.joinDate + " " +
-                this.birth + " " +
-                this.gender;
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", friend_phone='" + friend_phone + '\'' +
+                ", message='" + message + '\'' +
+                ", token='" + token + '\'' +
+                ", notification='" + notification + '\'' +
+                ", joinDate='" + joinDate + '\'' +
+                ", birth='" + birth + '\'' +
+                ", gender='" + gender + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
     }
-
-
 }
 
 

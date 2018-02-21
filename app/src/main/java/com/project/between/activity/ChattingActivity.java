@@ -72,18 +72,18 @@ public class ChattingActivity extends AppCompatActivity {
         recyclerViewChatting = (RecyclerView) findViewById(R.id.recyclerViewChatting);
         editTextPutMessage = (EditText) findViewById(R.id.editTextPutMessage);
         buttonSendMessage = (Button) findViewById(R.id.buttonSendMessage);
-        myNum = PreferenceUtil.getStringValue(this, "myNum");
+        myNum = PreferenceUtil.getStringValue(this, ConstantUtil.MY_NUMBER);
     }
 
     private void setInstanceOfDatabase() {
 
         database = FirebaseDatabase.getInstance();
 
-        String result = PreferenceUtil.getStringValue(ChattingActivity.this, "chatroom");
-        String photoRoom = PreferenceUtil.getStringValue(this, "photoroom");
+        String result = PreferenceUtil.getStringValue(ChattingActivity.this, ConstantUtil.CHAT_ROOM);
+        String photoRoom = PreferenceUtil.getStringValue(this, ConstantUtil.PHOTO_ROOM);
 
         roomRef = database.getReference(ConstantUtil.CHAT_ROOM).child(result);
-        profileRef = database.getReference(ConstantUtil.PHOTO).child(photoRoom).child("profile");
+        profileRef = database.getReference(ConstantUtil.PHOTO).child(photoRoom).child(ConstantUtil.PROFILE);
         message = new MyMessage();
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
