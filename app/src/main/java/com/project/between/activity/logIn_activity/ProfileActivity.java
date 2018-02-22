@@ -121,6 +121,15 @@ public class ProfileActivity extends AppCompatActivity {
         userRef.child(tempkey).child(ConstantUtil.BIRTHDAY).setValue(birthday);
         userRef.child(tempkey).child(ConstantUtil.FIRSTDAY).setValue(firstday);
         userRef.child(tempkey).child(ConstantUtil.GENDER).setValue(gender);
+        // TODO--------------------------------------
+        userRef.child(tempkey).child(ConstantUtil.IMAGE_URL).setValue(downloadUrl.toString());
+
+        // ------------------------------------------
+        SignUpActivity.user.setGender(gender);
+        SignUpActivity.user.setName(name);
+        SignUpActivity.user.setBirth(birthday);
+        SignUpActivity.user.setJoinDate(firstday);
+
         PreferenceUtil.setValue(ProfileActivity.this, ConstantUtil.AUTO_SIGN_IN, "true");
     }
 

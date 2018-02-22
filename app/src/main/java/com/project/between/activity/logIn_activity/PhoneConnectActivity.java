@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +35,7 @@ public class PhoneConnectActivity extends AppCompatActivity {
     DatabaseReference veriRef;
     private EditText myNum_edit;
     private EditText friendNum_edit;
+    private EditText friendEmail_edit;
     private Button phone_Connect_btn;
     String tempkey;
     ImageButton phoneNum_img_btn;
@@ -65,6 +67,7 @@ public class PhoneConnectActivity extends AppCompatActivity {
         phone_Connect_btn = (Button) findViewById(R.id.phone_Connect_btn);
         phoneNum_img_btn = (ImageButton) findViewById(R.id.phoneNum_img_btn);
         friendPhone_text = (TextView) findViewById(R.id.friendPhone_text);
+        friendEmail_edit = findViewById(R.id.friendEmail_text);
     }
 
     public void onConnect(View view) {
@@ -76,13 +79,15 @@ public class PhoneConnectActivity extends AppCompatActivity {
     private void searchTemp() {
         final String myNumber = myNum_edit.getText().toString();
         final String friendNumber = friendNum_edit.getText().toString();
+        final String friendEmail = friendEmail_edit.getText().toString().replace(".", "_");
+
         userRef.child(tempkey).child(ConstantUtil.MY_PHONE).setValue(myNumber);
         userRef.child(tempkey).child(ConstantUtil.FRIEND_PHONE).setValue(friendNumber);
 
         tempRoomRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.hasChild(friendNumber)) {
+                if (!dataSnapshot.hasChild(friendNumber) && !dataSnapshot.hasChild(friendEmail)) {
                     Toast.makeText(PhoneConnectActivity.this, "가진 사용자 없음", Toast.LENGTH_LONG).show();
                     dataSnapshot.child(myNumber).child(ConstantUtil.FRIEND_PHONE).getRef().setValue(friendNumber);
                     dataSnapshot.child(myNumber).child("status").child("confirm").getRef().setValue("none");
@@ -91,9 +96,17 @@ public class PhoneConnectActivity extends AppCompatActivity {
 
                     userRef.child(tempkey).child(ConstantUtil.ROOM_ID).child(ConstantUtil.ID).setValue(chatRoom);
                     userRef.child(tempkey).child(ConstantUtil.PHOTO_ID).child(ConstantUtil.ID).setValue(photoRoom);
+
+                    userRef.child(tempkey).child(ConstantUtil.FRIEND_EMAIL).setValue(friendEmail);
+                    SignUpActivity.user.setFriend_phone(friendNumber);
+                    SignUpActivity.user.setPhone(myNumber);
+                    SignUpActivity.user.setFriend_email(friendEmail);
+
+
                     PreferenceUtil.setValue(PhoneConnectActivity.this, ConstantUtil.CHAT_ROOM, chatRoom);
                     PreferenceUtil.setValue(PhoneConnectActivity.this, ConstantUtil.MY_NUMBER, myNumber);
                     PreferenceUtil.setValue(PhoneConnectActivity.this, ConstantUtil.PHOTO_ROOM, photoRoom);
+
 
                     moveToAcceptActivity(myNumber, friendNumber);
 
@@ -104,6 +117,13 @@ public class PhoneConnectActivity extends AppCompatActivity {
                     String photoRoom = friendNumber + myNumber + "photo";
                     userRef.child(tempkey).child(ConstantUtil.ROOM_ID).child(ConstantUtil.ID).setValue(friendNumber + myNumber + "chat");
                     userRef.child(tempkey).child(ConstantUtil.PHOTO_ID).child(ConstantUtil.ID).setValue(photoRoom);
+
+                    userRef.child(tempkey).child(ConstantUtil.FRIEND_EMAIL).setValue(friendEmail);
+                    SignUpActivity.user.setFriend_phone(friendNumber);
+                    SignUpActivity.user.setPhone(myNumber);
+                    SignUpActivity.user.setFriend_email(friendEmail);
+
+
                     PreferenceUtil.setValue(PhoneConnectActivity.this, ConstantUtil.CHAT_ROOM, chatRoom);
                     PreferenceUtil.setValue(PhoneConnectActivity.this, ConstantUtil.MY_NUMBER, myNumber);
                     PreferenceUtil.setValue(PhoneConnectActivity.this, ConstantUtil.PHOTO_ROOM, photoRoom);
@@ -165,6 +185,7 @@ public class PhoneConnectActivity extends AppCompatActivity {
     }
 
     public void moveToProfileActivity() {
+
         Intent intent = new Intent(PhoneConnectActivity.this, ProfileActivity.class);
         intent.putExtra(ConstantUtil.TEMP_KEY2, tempkey);
         startActivity(intent);

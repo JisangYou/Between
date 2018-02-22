@@ -16,11 +16,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.project.between.activity.logIn_activity.SignUpActivity;
+import com.project.between.activity.logIn_activity.SplashActivity;
 import com.project.between.adapter.AnniversaryCustomListAdapter;
 import com.project.between.domain.AnniversaryListVO;
 import com.project.between.R;
@@ -53,6 +57,9 @@ public class AnniversaryListActivity extends AppCompatActivity implements View.O
     private TextView tvUpdate, tvTitle, tvDateCount, tvDate, tvCustomDday, tvCustomTitle, tvCustomDate;
     private ImageView pictureYou, ptictureMe;
 
+    FirebaseAuth mAuth;
+    FirebaseUser currentUser;
+
     String myEmail, otherEmail;
 
     @Override
@@ -61,8 +68,9 @@ public class AnniversaryListActivity extends AppCompatActivity implements View.O
         setContentView(R.layout.activity_anniversary_list);
 
         // 내 정보 및 상대방 정보
-        myEmail = "test1@gmail.com";
-        otherEmail = "test2@gmail.com";
+        myEmail = SignUpActivity.user.getEmail();
+        otherEmail = SignUpActivity.user.getFriend_email();
+
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);

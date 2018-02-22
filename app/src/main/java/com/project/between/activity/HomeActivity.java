@@ -16,15 +16,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.project.between.R;
+import com.project.between.activity.logIn_activity.SignUpActivity;
 import com.project.between.domain.User;
 import com.project.between.util.ConstantUtil;
-import com.project.between.util.UserDao;
+
+import java.util.ArrayList;
 
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -36,12 +40,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton btnCommonChatting;
     ImageButton btnCommonMore;
     ImageView ivBackground;
-
+    TextView tvMe, tvYou;
 
     FirebaseDatabase database;
     DatabaseReference userRef;
     DatabaseReference photoRef;
-
+    FirebaseAuth mAuth;
+    FirebaseUser currentUser;
 
 
     @Override
@@ -51,31 +56,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         database = FirebaseDatabase.getInstance();
         userRef = database.getReference(ConstantUtil.USER);
         photoRef = database.getReference(ConstantUtil.PHOTO);
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
 
 
         initView();
-        settingWidgetView();
         initListener();
         initBackground();
 
     }
 
-    private void settingWidgetView() {
-        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                Log.e("User", "User =  " + user);
-                Log.e("userRef", "userRef =  " + userRef.getKey());
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     private void initBackground() {
         ivBackground = (ImageView) findViewById(R.id.imageView);
@@ -99,6 +89,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnCommonHome = (ImageButton) findViewById(R.id.btnCommonHome);
         btnCommonMore = (ImageButton) findViewById(R.id.btnCommonMore);
         btnCommonChatting = (ImageButton) findViewById(R.id.btnCommonChatting);
+
     }
 
 

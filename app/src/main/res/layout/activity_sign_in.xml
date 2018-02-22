@@ -28,7 +28,7 @@
 
             android:layout_height="match_parent"
 
-            android:src="@drawable/ballo" />
+            android:src="@drawable/love1" />
 
 
         <ImageView
@@ -39,7 +39,7 @@
 
             android:layout_height="match_parent"
 
-            android:src="@drawable/ballon1" />
+            android:src="@drawable/love2" />
 
 
         <ImageView
@@ -50,7 +50,7 @@
 
             android:layout_height="match_parent"
 
-            android:src="@drawable/ballo" />
+            android:src="@drawable/love3" />
 
 
     </ViewFlipper>
@@ -74,31 +74,26 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="로그인"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/friendPhone_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.785"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUp_btn"
-        app:layout_constraintVertical_bias="0.043" />
+        app:layout_constraintStart_toEndOf="@+id/friendPhone_text"
+        app:layout_constraintTop_toTopOf="@+id/friendPhone_text"
+        app:layout_constraintVertical_bias="0.666" />
 
     <TextView
         android:id="@+id/friendPhone_text"
         android:layout_width="171dp"
         android:layout_height="26dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="104dp"
         android:layout_marginTop="8dp"
         android:text="이미 아이디가 있으신가요?"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/signIn_btn"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signUp_btn"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintVertical_bias="0.29" />
 </android.support.constraint.ConstraintLayout>

@@ -19,6 +19,7 @@ public class User {
     public String birth;
     public String gender;
     public String imageUrl;
+    public String friend_email;
 
     public User() {
 
@@ -30,26 +31,7 @@ public class User {
         this.token = token;
     }
 
-    public User(String phone, String friend_phone) {
-        this.phone = phone;
-        this.friend_phone = friend_phone;
-    }
 
-    public User(String id, String name, String email, String password, String phone, String friend_phone, String message, String token, String notification, String joinDate, String birth, String gender, String imageUrl) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
-        this.friend_phone = friend_phone;
-        this.message = message;
-        this.token = token;
-        this.notification = notification;
-        this.joinDate = joinDate;
-        this.birth = birth;
-        this.gender = gender;
-        this.imageUrl = imageUrl;
-    }
 
     public String getId() {
         return id;
@@ -155,6 +137,14 @@ public class User {
         this.imageUrl = imageUrl;
     }
 
+    public String getFriend_email() {
+        return friend_email;
+    }
+
+    public void setFriend_email(String friend_email) {
+        this.friend_email = friend_email;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -171,6 +161,7 @@ public class User {
                 ", birth='" + birth + '\'' +
                 ", gender='" + gender + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
+                ", friend_email='" + friend_email + '\'' +
                 '}';
     }
 }

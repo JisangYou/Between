@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.project.between.activity.logIn_activity.SignUpActivity;
 import com.project.between.domain.AlarmReceiveUser;
 import com.project.between.domain.Anniversary;
 import com.project.between.R;
@@ -439,8 +440,8 @@ public class CalendarWriteActivity extends AppCompatActivity implements View.OnC
     private boolean dayCountOneYn = true;
     private void initView(){
         // 내 정보 및 상대방 정보
-        myEmail = "test1@gmail.com";
-        otherEmail = "test2@gmail.com";
+        myEmail = SignUpActivity.user.getEmail();
+        otherEmail = SignUpActivity.user.getFriend_email();
 
         etTitle = (EditText) findViewById(R.id.etTitle);
         etMemo = (EditText) findViewById(R.id.etMemo);

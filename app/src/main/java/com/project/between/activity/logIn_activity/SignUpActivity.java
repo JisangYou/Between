@@ -27,7 +27,7 @@ import com.project.between.util.DialogUtil;
 import com.project.between.util.PreferenceUtil;
 import com.project.between.util.VerificationUtil;
 import com.project.between.R;
-import com.project.between.util.UserDao;
+
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -39,8 +39,8 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText signUp_password_edit;
     private Button signUp_btn;
     String tempKey;
-    UserDao userDao;
-    User user;
+    public static User user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,6 @@ public class SignUpActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         userRef = database.getReference(ConstantUtil.USER);
-        ususerDao.getInstance().getUser()
 
 
         initView();
@@ -89,12 +88,11 @@ public class SignUpActivity extends AppCompatActivity {
                             });
                             tempKey = email.replace(".", "_");
                             String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-
-
                             user = new User(fUser.getUid(), email, refreshedToken);
-                            //TODO
-
+                            Log.e("check1","check1"+user);
                             userRef.child(tempKey).setValue(user);
+                            //Todo 지상
+
 
 
                         }

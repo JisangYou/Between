@@ -27,9 +27,11 @@ public class ConstantUtil {
     public static final String PROFILE = "profile";
     public static final String NAME = "name";
     public static final String BIRTHDAY = "birthday";
-    public static final String FIRSTDAY ="firstday" ;
-    public static final String GENDER ="gender" ;
-    public static final int SELECT_IMAGE=1003;
+    public static final String FIRSTDAY = "firstday";
+    public static final String GENDER = "gender";
+    public static final String IMAGE_URL = "imageurl";
+    public static final String FRIEND_EMAIL = "friendEmail";
+    public static final int SELECT_IMAGE = 1003;
 
 
 }
