@@ -8,7 +8,7 @@
 ## 2. __Application Structure 및 동영상 link__
 
 - Application의 구조를 기능별로 1.로그인 2. 채팅 3. 일정관리로 구성
-- [동영상 링크](https://www.youtube.com/edit?o=U&video_id=k7C1DMJDYc0)
+- [동영상 링크](https://youtu.be/k7C1DMJDYc0)
 
 ## __기능 설명__
 
