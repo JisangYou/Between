@@ -10,13 +10,13 @@
 - Application의 구조를 기능별로 1.로그인 2. 채팅 3. 일정관리로 구성
 - [동영상 링크](https://youtu.be/k7C1DMJDYc0)
 
-## __기능 설명__
+## 3. __기능 설명__
 
 - 채팅의 주된 기능으로써, 서버는 firebase 사용
 - firebase 기능 중 인증, 데이터베이스, 실시간 데이터베이스 사용
 - 주요 라이브러리 - glide, recyclerView
 
-## __주요 Issue__
+## 4. __주요 Issue__
 
 ### 4-1. 로그인시 파트너 매칭 Issue
 
